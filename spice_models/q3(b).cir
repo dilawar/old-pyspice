@@ -1,0 +1,27 @@
+ques 3
+
+vdc p 0 dc 1
+l1 p r .19u
+c1 r 0 1.1pf
+l2 u w .19u
+c2 w o 1.1pf
+l3 v x .19u
+c3 x 0 1.1pf
+l4 0 x .19u
+c4 x 0 1.1pf
+l34 w x .16u
+c34 w x 9.6pf
+
+*****block A******
+
+v1 1 0 PWL(0 0v 1ns 1v)
+r1 1 u 10
+
+
+****block B******
+
+c11 r w 0.1nf
+c22 w x 0.1nf
+
+.tran 1ns 10000ns uic
+.end

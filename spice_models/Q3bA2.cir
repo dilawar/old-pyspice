@@ -1,0 +1,34 @@
+Roll no. 123070045; Problem 3(b):
+.include tsmc_spice_180nm.txt
+
+L1	1	2 	1.9456E-7
+L2	0	4	1.9456E-7
+L3	7	3	1.9456E-7
+L4	5	4 	1.9456E-7
+
+Vdd 	1 	0	 dc 1.0V
+Vrt	6	5	 pwl (0ns 0v 5ns 0v 6ns 1v 100ns 1v)
+
+R1	6	7	10
+R2	5	0	0
+C1	3	4	0.1E-9
+C2	2	3	0.1E-9
+
+
+
+K13	L1	L3	0.153754626
+K14	L1	L4	0.153754626
+K12	L1	L2	0.099568257
+K34	L3	L4	0.842948191
+K32	L2	L3	0.153754626
+K42	L2	L4	0.153754626
+
+.ic v(2)=1v  v(4) = 0v 
+.tran 0.01ns 200ns 
+
+.control
+run
+plot v(2) v(4)
+.endc
+
+.end

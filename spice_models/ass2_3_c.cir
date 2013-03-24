@@ -1,0 +1,48 @@
+*resistance
+
+R0 3 4 10
+R1 6 7 10
+
+*inductance
+
+L0 1 2 0.195614uH
+L1 4 5 0.195614uH
+L2 7 8 0.195614uH
+L3 0 9 0.195614uH
+
+*capacitance
+
+C0 2 5 0.1nf
+C1 5 9 0.1nf
+C2 2 8 0.1nf
+C3 8 9 0.1nf
+
+*coupling capacitance
+
+K0 L0 L1 0.152743
+K1 L0 L2 0.152743
+K2 L0 L3 0.099658
+K3 L1 L2 0.84327
+K4 L1 L3 0.152743
+K5 L2 L3 0.152743
+
+*supply voltage
+
+V1 1 0 dc 1v
+ .ic v(2)=1v v(9)=0v 
+
+*input ramp voltage r(t)
+
+Vramp1 1 3 pwl(0ns 0v 1ns 1v 10ns 1v)
+
+Vramp2 6 0 pwl(0ns 0v 1ns 1v 10ns 1v)
+
+
+
+
+.tran 0.1ns 500ns uic
+
+
+
+
+.end

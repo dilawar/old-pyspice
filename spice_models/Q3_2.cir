@@ -1,0 +1,26 @@
+Q3.2 --- 09007021
+
+Vin P Q dc 1V
+VRt 1 Q pwl(0 0 1ns 1)
+V0 Q 0 dc 0
+V1 X S dc 0
+
+L1 P R 1.9335e-07H
+L2 Q S 1.9335e-07H
+L3 U W 1.9335e-07H
+L4 V X 1.9335e-07H
+K34 L3 L4 0.847
+
+C1 R 0 1.94939e-12
+C2 W 0 1.94939e-12
+C3 X 0 1.94939e-12
+C4 S 0 1.94939e-12
+C5 W X 4.82482e-13
+
+R0 1 U 10
+
+C6 R W 0.1n
+C7 W X 0.1n
+
+.tran 1p 50ns
+.end

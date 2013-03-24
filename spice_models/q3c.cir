@@ -1,0 +1,25 @@
+
+***Yaksh Rawal, Roll.no: 113076005, EE668***
+Vdd P 0 1V
+L4 P R 1.4766e-8H
+L3 U W 1.4766e-8H
+L2 V X 1.4766e-8H
+L1 0 S 1.4766e-8H
+K12 L1 L2 0.0168
+K13 L1 L3 0.03325
+K14 L1 L4 0.03325
+K23 L2 L3 0.03325
+K24 L2 L4 0.03325
+K34 L3 L4 0.8004
+C1 W S 0.1nF
+C2 R W 0.1nF
+C3 R X 0.1nF
+C4 X S 0.1nF
+R1 G U 10
+R2 H V 10
+VA G 0 PWL(0 0 1ns 1 20ns 1)
+VB 0 H PWL(0 0 1ns 1 20ns 1)
+.control
+.tran 1nS 500nS 0nS
+.endc
+.end

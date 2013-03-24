@@ -1,0 +1,31 @@
+
+
+VDD 1 0 dc 1v
+L1 1 8 .1942uH
+L2 0 7 .1942uH
+L3 3 5 .1942uH
+L4 4 6 .1942uH 
+R1 100 3 10
+R2 101 4 10
+Vac1  1 100 pwl(0ns 0v 1ns 0v 2ns 1v 3ns 1v 4ns 1v)
+Vac2 101 0 pwl((0ns 0v 1ns 0v 2ns 1v 3ns 1v 4ns 1v)
+
+C1 8 5 0.1nF ic=0v
+C2 5 7 0.1nF ic=1v
+C3 8 6 0.1nF ic=1v
+C4 6 7 0.1nF ic=0v
+
+
+**mutual inductors
+
+K1 L1 L2 .10008
+K2 L3 L4 .80605
+K3 L3 L1 .154682
+K4 L4 L2 .154682
+K5 L2 L3 .154682
+K6 L1 L4 .154682
+
+.ic v(8)=1v v(7)=0v v(5)=1v v(6)=0v v(100)=1v v(101)=0v
+
+.tran  0.01ns 100ns uic
+.end

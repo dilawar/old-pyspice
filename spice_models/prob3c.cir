@@ -1,0 +1,65 @@
+
+*resistances
+R1 1 2 10
+R2 4 5 10
+
+*inductors
+L2 2 3 194.49nH
+L3 5 6 194.49nH
+L4 9 10 194.49nH
+L1 7 8 194.49nH
+
+*mutual inductance
+K1 L1 L2 0.1535
+K2 L1 L3 0.1535
+K3 L1 L4 0.0997
+K4 L2 L3 0.8485
+K5 L2 L4 0.1535
+K6 L3 L4 0.1535  
+
+*capacitances in circuit
+C1 8 3 0.1nF
+C2 8 6 0.1nF
+C3 3 10 0.1nF
+C4 6 10 0.1nF
+
+*self and mutual capacitances of wires
+C5 8 3 0.223pF
+C6 7 1 0.223pF
+C7 8 6 0.214pF
+C8 7 5 0.214pF
+C9 8 10 0.139pF
+C10 7 9 0.139pF
+C11 3 6 2.803pF
+C12 2 5 2.803pF
+C13 2 9 0.214pF
+C14 3 10 0.214pF
+C15 5 9 0.223pF
+C16 6 10 0.223pF
+C17 8 9 1.056pF
+C18 7 9 1.056pF
+C19 2 9 1.056pF
+C20 3 9 1.056pF
+C21 6 9 1.056pF
+C22 5 9 1.056pF
+C23 10 9 1.056pF
+
+*ramp sources
+V1 7 1 pwl ( 0ns 0V 1ns 1V 10ns 1V 50ns 1V)
+V3 4 9 pwl ( 0ns 0V 1ns 1V 10ns 1V 50ns 1V)
+
+*dc voltage source
+V2 7 9 dc 1V
+V4 9 gnd 0V
+
+*initial condition
+.ic v(8)=1V v(10)=0V v(3)=1V v(6)=0V v(2)=1V v(5)=0V
+
+.tran 0.02ns 2000ns uic
+
+.control
+run
+plot v(8) v(10)
+.endc
+
+.end

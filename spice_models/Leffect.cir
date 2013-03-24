@@ -1,0 +1,20 @@
+INV_LEFF
+.include tsmc_spice_180nm.txt
+
+mp1 3 6 7 7 cmosp L=0.18u W=3.6u
+mn1 7 6 4 4 cmosn L=0.18u W=1.8u 
+
+V1 1 0 dc 1v
+V2 6 4 PWL(0 0 1ns 0 2ns 1 10ns 1) 
+
+C1 4 3  99n  
+C2 4 7  1n  
+R1 1 2  0.025  
+R2 0 5  0.025
+L1 2 3  0.194H  
+L2 5 4  0.194H  
+
+.tran 0.1ns 100ns 
+
+.end
+

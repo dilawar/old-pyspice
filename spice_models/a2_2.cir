@@ -1,0 +1,29 @@
+CIRCUIT 1 
+L1 1 4 194n
+L3 2 5 194n
+L4 0 6 194n
+L2 0 8 194n
+C1 4 5 100p
+C2 5 6 100p
+C3 1 2 85f
+C4 4 5 85f
+C5 2 0 3.16p
+C6 5 6 3.16p
+R1 7 2 10
+R2 6 8 1 
+K13 L1 L3 0.15
+K14 L1 L4 0.15
+K24 L2 L4 0.15
+K23 L2 L3 0.15
+K34 L3 L4 0.782
+K12 L1 L2 0.1
+V1 1 0 dc 1
+V2 7 0 pwl(0ns 0V 1ns 1V 2us 1V)
+.control
+run
+plot V(7)
+plot V(4)
+
+.endc
+.tran 0.02us 1us
+.end

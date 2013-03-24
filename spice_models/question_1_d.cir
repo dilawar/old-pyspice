@@ -1,0 +1,18 @@
+Question 1.d Netlist
+
+*.param ind_L=100
+Vdd 1 0 1v
+Vin 1 0 pulse 0 1 0 10us 10us 1000000s 2000000s
+*Vin 1 0 pulse 0 1 0 10ps 10ps 1s 2s
+R1 1 2 2.5m
+L1 2 3 1h
+C_total 3 4 100n
+L2 4 5 1h
+R2 5 0 2.5m
+
+*.tran 1ms 20s 
+.tran 1ms 10000s 
+
+.control 
+run 
+plot (v(3)-v(4))

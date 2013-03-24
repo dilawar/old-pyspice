@@ -1,0 +1,26 @@
+*Netlist for eg 1-d :: L=1n
+
+C_load 4 0 1nF IC=0v
+C_decoupling 3 0 99nF IC=1V 
+
+L_wire 2 3 1n
+
+*Summation of the series resistances of 2 wires
+R_wire 1 2 0.1 
+
+*Resistance required for convergence
+R_check 4 0 100000000000000000M
+
+*Voltage Controlled Current Source
+G 3 4 5 0 1 
+
+*Power Supply
+Vdd 1 0 1V 
+
+*Control For VCCS
+V_spike 5 0 pwl( 0ps 0.0v 950ps 0v 1000ps 20v 1050ps 0.0v 2950ps 0.0v 3ns 20v 3050ps 0v 4ns 0v) r 
+
+*.ic v(4) = 0v v(3)=1V
+
+.tran 10ps 200ns
+.end

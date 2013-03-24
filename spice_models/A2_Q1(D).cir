@@ -1,0 +1,15 @@
+.TITLE ASSIGNMENT2 EE668 PRASHANT SINGH 123070052	q-1(d)
+
+VDC 		1 	0 	DC 	1
+R1 		1 	2 	0.05
+L1 		2 	3 	0.5nH
+Cd	 	3 	5 	99nF
+L2 		5 	6 	0.5nH
+R2 		6 	0 	0.05
+Cload 		4 	5 	1nF
+Vload		8	0	pwl (0 0 0.05ns 20 0.1ns 0 1ns 0) r=0
+G11		3	4	8	0	1 
+Rpath		4 	0	1000M
+
+.end
+

@@ -1,0 +1,26 @@
+Shivam A2_3c
+V1 1 0 dc 1
+L1 1 2 193.26n
+C1 2 3 0.1n
+C2 3 5 0.1n
+C3 2 4 0.1n
+C4 4 5 0.1n
+L3 3 6 193.26n
+R1 6 8 10
+Vr1 1 8 pwl(0 0 1n 1)
+L4 4 7 193.26n
+R2 7 9 10
+Vr2 9 0 pwl(0 0 1n 1)   
+L2 5 0 193.26n
+K34 L3 L4 0.84725       * shows coupling ratio [0-1] 
+K13 L1 L3 0.1542
+K14 L1 L4 0.1542
+K23 L2 L3 0.1542
+K24 L2 L4 0.1542
+K12 L1 L2 0.1
+.control
+tran 0.1ns 5ns
+write datafile.raw v(2) v(5)
+plot v(8) v(9) v(2) v(5)
+.endc
+.end

@@ -1,0 +1,21 @@
+
+.param lvar = 10u
+
+Vdc 1 0 1V
+R1  1 2 50m
+L1  2 3 lvar
+G1  3 4 9 0 1 
+V1 9 0 PWL(0 0 50p 20 100p 0 1n 0) r=0
+L2 4 5 lvar
+R2 5 0 50m
+CD 3 4 99nF
+
+.ic v(3)=1V v(4)=0V
+.tran 0.05n 1000n uic
+
+.control
+run
+plot (v(3)-v(4))
+.endc
+
+.end

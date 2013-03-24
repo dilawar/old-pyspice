@@ -1,0 +1,47 @@
+assign23a
+
+C13 1 3 200ff
+*C10 1 0 200ff
+*C101 1 0 120ff
+
+C24 2 4 0.1nf
+
+C241 2 4 200ff
+*C26 2 6 200ff
+*C261 2 6 120ff
+
+C30 3 0 5pf
+*C301 3 0 200ff
+
+C46 4 6 0.1nf
+
+C41 4 6 5pf
+*C21 4 6 200ff
+
+L12 1 2 193nH 
+L34 3 4 193nH
+L06 0 6 193nH
+L61 0 6 193nH
+
+K14 L12 L34 0.154
+*K16 L12 L06 0.154
+*K11 L12 L61 0.100
+K36 L34 L06 0.854
+*K31 L34 L61 0.154
+K06 L06 L61 0.154
+
+R1 7 3 10
+
+V10 1 0 1V
+
+vinb 7 0 PWL(0 0v 1ns 1v 180ns 1v) 
+
+.tran 1ns 180ns uic
+
+.control
+run
+plot v(6) v(2)
+plot v(4) v(7) 
+.endc
+
+.end

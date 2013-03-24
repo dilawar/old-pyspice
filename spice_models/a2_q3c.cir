@@ -1,0 +1,35 @@
+L analysis
+* this line is comment only
+
+Vdd P 0 1V
+L1 P R 195.8nH
+L3 U W 195.8nH
+L4 V X 195.8nH
+L2 S 0 195.8nH
+
+K1 L1 L2 0.099101408
+K2 L1 L3 0.152915828
+K3 L1 L4 0.152830564
+K4 L2 L3 0.152747342
+K5 L2 L4 0.152831585
+K6 L3 L4 0.835144132
+
+C1 W R 0.1nF
+C2 W X 0.1nF
+C3 X S 0.1nF
+C4 X R 0.1nF
+
+R1 M U 10
+R2 N V 10
+
+VA 0 N PWL(0 0 1ns 1 20ns 1)
+VB P M PWL(0 0 1ns 1 20ns 1)
+
+.tran 1nS 500nS 0nS
+.control
+run
+*plot v(8)
+*plot v(9)
+plot v(R) v(S)
+.endc
+.end

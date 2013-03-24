@@ -1,0 +1,39 @@
+ 
+
+VDD 7 0 DC 1V
+
+
+
+L11 7 1 195nH
+L22 0 5 195nH
+L33 3 2 195nH
+L44 0 5 195nH
+
+K12 L11 L22 0.0995
+K13 L11 L33 0.154
+K14 L11 L44 0.154
+K23 L33 L22 0.154
+K24 L44 L22 0.154
+K34 L33 L44 0.841
+
+
+*Capacitance Modelling
+
+C13 1 2 408fF
+C34 2 5 10.2pF
+C42 5 5 389fF
+C1 1 2 0.1n
+C2 2 5 0.1n
+R1 4 3 10
+
+*Test voltage ramp
+V 4 0 PWL(0 0 1nS 1 50nS 1 1us 1 2us 1 3us) 
+
+
+.tran 0.01ns 500ns uic
+.control
+
+run 
+plot v(1) 
+PLOT v(5)
+.endc  

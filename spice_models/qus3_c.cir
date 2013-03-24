@@ -1,0 +1,60 @@
+
+vdc supply 0 dc 1v
+
+*wire inductences
+
+l1 supply 6 0.19364uH
+l2 3 4 0.19364uH
+l3 2 5 0.19364uH
+l4 0 7 0.19364uH
+*coupling coefients
+k1 l1 l2 0.152
+k2 l1 l3 0.152
+k3 l4 l3 0.152
+k4 l4 l2 0.152
+k5 l2 l3 0.846
+k6 l1 l4 0.099
+
+*resistances
+
+r1 3 8 10
+r2 1 2 10
+
+*capacitances
+c1 6 4 0.1nf
+c2 4 7 0.1nf
+c3 5 7 0.1nf
+c4 6 5 0.1nf
+
+*initial condition acroos capacitances
+.ic v(6)=1v
+.ic v(4)=1v
+.ic v(5)=0v
+.ic v(7)=0v
+
+
+vac1 supply 8 pwl(0 0v 1ns 1v 10ns 1v)
+vac2 1 0 pwl(0 0v 1ns 1v 10ns 1v)
+
+
+**stray capacitances
+c5 3 2 1.4pf
+c6 4 5 1.4pf
+*c7 6 0 0.6pf
+*c8 supply 0 0.6pf
+*c9 4 0 0.6pf
+*c10 8 0 0.6pf
+*c11 5 0 0.6pf
+*c12 1 0 0.6pf
+*c13 7 0 0.6pf
+
+
+.control
+run
+plot v(6)
+plot v(7)
+.endc
+
+.tran 0.001ns 20ns uic
+
+.end

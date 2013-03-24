@@ -1,0 +1,47 @@
+qus 3_b
+vdc supply 0 dc 1v
+
+*wire inductences
+
+l1 supply 1 0.19364uH
+l2 4 2 0.19364uH
+l3 0 3 0.19364uH
+l4 0 3 0.19364uH
+*coupling coefients
+k1 l1 l2 0.152
+k2 l1 l3 0.152
+k3 l4 l3 0.152
+k4 l4 l2 0.152
+k5 l2 l3 0.846
+k6 l1 l4 0.099
+*resistance
+r1 5 4 10
+*capacitance
+c1 1 2 0.1nf
+c2 2 3 0.1nf
+*stray capacitances
+c3 2 3 2.3pf
+c4 4 0 2.3pf
+
+*initial condition acroos capacitances
+.ic v(1)=1v
+.ic v(3)=0v
+
+.control
+run
+plot v(1)
+plot v(3)
+plot v(1)-v(3)
+.endc
+
+.tran 1ns 100ns uic
+vac 5 0 PWL(0 0v 1ns 1.0v 1.5ns 1v 2ns 1v 4ns 1v)
+
+
+.end
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+Switch
+
+R1 1 2 50m
+R2 9 0 50m
+
+L1 2 7 100
+L2 8 9 100
+
+C1 3 8 100n
+C2 4 0 1n
+
+S1 3 4 5 0 switch1 OFF
+S2 4 8 6 0 switch1 OFF
+
+V1 1 0 dc 1v
+Vid 7 3 dc 0v
+Vc1 5 0 PULSE(0 1 0NS 0NS 0NS 0.5NS 1NS)
+Vc2 6 0 PULSE(1 0 0NS 0NS 0NS 0.5NS 1NS)
+
+.ic v(3)=0v v(4)=0v v(8)=0v
+
+.control
+tran 0.01ns 3us uic
+plot v(3)
+plot Vid#branch
+write test.raw v(3)
+.endc
+

@@ -1,0 +1,102 @@
+EE668 Assignment-2 Q3b
+
+**************** Wire Modelling ******************
+**************** Self Inductances ****************
+L1 P R 196nH
+
+L2 0 S 196nH
+
+L3 U W 196nH
+
+L4 V X 196nH
+
+**************** Mutual Inductances **************
+
+K12 L1 L2 0.1
+
+K13 L1 L3 0.153
+
+K14 L1 L4 0.153
+
+K23 L2 L3 0.153
+
+K24 L2 L4 0.153
+
+K34 L3 L4 0.842
+
+
+**************** Stray Capacitance ***************
+
+**** Capacitances have been calculated assuming the dielectric to be 3.9
+
+C10a P 0 0.909pF
+
+C10b R 0 0.909pF
+
+C20a 0 0 0.905pF
+
+C20b S 0 0.905pF
+
+C30a U 0 0.442pF
+
+C30b W 0 0.442pF
+
+C40a U 0 0.407pF
+
+C40b W 0 0.407pF
+
+
+C12a P 0 0.096pF
+
+C12b R S 0.096F
+
+C13a P U 0.098pF
+
+C13b R W 0.098pF
+
+C14a P V 0.096pF
+
+C14b R X 0.096pF
+
+
+C23a 0 U 0.092pF
+
+C23b S W 0.092pF
+
+C24a 0 V 0.097pF
+
+C24b S X 0.097pF
+
+
+
+C34a U V 4.372pF
+
+C34b W X 4.372pF
+
+
+Rtemp1 S 0 1000G 
+*Reqd to provide dc path
+
+
+**************** System *****************
+
+Vdd P 0 dc 1v
+
+C1 R W 0.1nF
+
+C2 W S 0.1nF
+
+* R1--> Short between X and S
+Rt1 X S 0
+
+* R1--> Short between V and 0
+Rt2 V 0 0
+
+R1 3 U 10
+
+Vr1 3 0 pwl(0ns 0V 1ns 1V 2ns 1V)
+
+.tran 1ns 200ns
+
+.end
+

@@ -1,0 +1,34 @@
+*Answer 1
+
+rdd 55 2 0.05
+l1 2 31 0H
+cd 31 4 99nF
+l2 5 4 0H
+rss 5 0 0.05
+
+*Current source
+
+*i_in_AB 3 4 pwl (0 0A 0.95ns 0A 1.00ns 20A 1.05ns 0A 1.95ns 0A 2.00ns 20A 2.05ns 0A 2.95ns 0A 3.00ns 20A 3.05ns 0A 3.95ns 0A 4.00ns 20A 4.05ns 0A 5.0ns 0A)
+
+Vread 31 3 dc 0
+
+i_in_AB 3 4 pulse (0A 20A 0ns 0.05ns 0.05ns 0ns 1ns)
+
+vdd 55 0 dc 1v
+
+.tran 0.01ns 100ns uic
+.end
+
+.control
+
+run
+
+plot v(4)-v(3)
+
+set filetype= ascii
+set noacct
+wrdata ans1d_0H v(4)-v(3)
+
+endc
+
+.end

@@ -1,0 +1,26 @@
+
+.include tsmc_spice_180nm.txt
+
+
+mp1 7 6 3 3 cmosp L=0.18u W=18u
+mn1 7 6 5 5 cmosn L=0.18u W=18u
+c1 7 0 1nf
+V1 1 0 dc 1
+cd 3 5 99nF
+
+r1 1 2 0.005
+l1 2 3 1000H
+r2 0 4 0.005
+l2 4 5 1000H
+vin 6 0 pulse(0 1 0 100ps 100ps .5ns 1ns)
+
+.tran .1ns 2.5ns uic
+
+.control
+run
+plot v(3)
+set hcopydevtype=postscript
+hardcopy 1di1000.ps v(3)
+.endc
+.end
+

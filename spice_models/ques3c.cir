@@ -1,0 +1,37 @@
+** Question 3 part C
+v1 p 0 dc 1
+l1 p r .19u
+c1 r 0 1.127p
+l2 u w .19u
+l3 0 x .19u
+k1 l2 l3 0.847
+c2 w 0 1.127p
+c23 w x 10.2p 
+
+c3 x 0 1.127p
+l4 0 s .19u
+c4 s 0 1.127p
+*k2 l3 l4 0.16
+*k3 l1 l3 0.16
+*k4 l1 l3 0.16
+*k5 l2 l4 0.16
+*k6 l1 l4 0.101
+
+
+*** section A and B
+ru ud u 10
+rv vd v 10
+vp p ud PWL(0 0 1n 1 )
+vq vd 0 PWL(0 0 1n 1 )
+
+
+crw r w 0.1n
+crx r x 0.1n
+csw s w 0.1n
+csx s x 0.1n
+
+
+.tran 1ns 1000ns uic
+.end
+
+ 

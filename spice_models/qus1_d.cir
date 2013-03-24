@@ -1,0 +1,23 @@
+qus1_d
+.param l=10pH
+vdc 1 0 dc 1v
+r1 1 2 0.05
+l1 2 3 l
+cl 3 4 1nf
+cd 3 4 99nf
+r2 5 0 0.05
+l2 4 5 l
+gac 3 4 6 0 1
+vac 6 0 PWL(0 0 50ps 0 100ps 20 150ps 0 1000ps 0) r
+
+
+.ic v(3)=1v
+.ic v(0)=0v
+.control
+run
+plot v(3)
+.endc
+
+.tran 10ps 100ns 
+
+.end

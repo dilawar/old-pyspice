@@ -1,0 +1,15 @@
+*System circuit
+
+V1 1 0 dc 1v
+R1 1 2 0.05
+L1 2 3 300p
+Cd 3 5 99n 
+Vspike 7 0 pwl(0 0V 50ps 20V 100ps 0V 2ns 0V) r=0
+Gvccs 3 4 7 0 1  
+Ct 4 5 1n
+R2 6 0 0.05
+L2 5 6 300p
+Rbadawala 4 0 100000G
+
+.tran 10ps 100n 
+.end

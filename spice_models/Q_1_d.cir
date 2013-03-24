@@ -1,0 +1,37 @@
+*Assignment_2_Q_1d
+*Author: Shahbaz sarik
+*Including the technology file
+.include tsmc_spice_180nm.txt
+
+*Defining inverter to see the effect of inductance shange from 0 to inf
+mpmos n7 n6 n3 n3 cmosp L=0.18u W=18u
+mnmos n7 n6 n5 n5 cmosn L=0.18u W=18u
+
+*Swithching load capacitance of 1nf
+cload n7 gnd 1nf
+
+*Decoupling capacitor as calculated
+cd n3 n5 99nF
+
+*Max R as calculated
+rabove n1 n2 25m
+rdown gnd n4 25m
+
+*Inductor(varied from 0 to inf)
+labove n2 n3 0.1m
+ldown n4 n5 0.1m
+
+*supply voltage
+V1 n1 gnd dc 1
+
+*Input pulse at 100ps rise time
+vin n6 gnd pulse(0 1 0 100ps 100ps 5ns 10ns)
+
+.tran 10ps 40ns uic
+
+.control
+run
+plot v(n6) v(n3)
+.endc
+.end
+

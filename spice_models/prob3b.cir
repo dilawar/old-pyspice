@@ -1,0 +1,58 @@
+.include tsmc_spice_180nm.txt
+*resistors
+R1 1 2 10
+
+*inductors
+L2 2 3 .19449uH
+L3 4 0 .19449uH
+L4 4 0 .19449uH
+L1 7 6 .19449uH
+
+*mutual inductances
+K1 L1 L2 0.1535
+K2 L1 L3 0.1535
+K3 L1 L4 0.0997
+K4 L2 L3 0.8485
+K5 L2 L4 0.1535
+K6 L3 L4 0.1535  
+
+*capacitances given in circuit
+C1 6 3 100pF
+C2 3 4 100pF
+
+*self and mutual wire capacitances
+C3 6 3 0.223pF
+C4 7 1 0.223pF
+C5 6 4 0.214pF
+C6 7 0 0.214pF
+C7 6 4 0.139pF
+C8 7 0 0.139pF
+C9 2 0 2.803pF
+C10 3 4 2.803pF
+C11 2 0 0.214pF
+C12 3 4 0.214pF
+C13 7 0 1.056pF
+C14 6 0 1.056pF
+C15 2 0 1.056pF
+C16 3 0 1.056pF
+C17 4 0 1.056pF
+C18 4 0 1.056pF
+
+*dc supply
+V1 7 0 dc 1V
+
+*ramp voltage
+V2 1 0 pwl ( 0ns 0V 1ns 1V 10ns 1V 500ns 1V)
+
+*initial condition
+.ic v(6)=1v v(4)=0V v(2)=0V v(3)=0V
+
+.tran 0.01ns 2000ns uic
+
+.control
+run
+plot v(6) v(4)
+plot v(6)-v(4)
+.endc
+
+.end

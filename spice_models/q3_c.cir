@@ -1,0 +1,41 @@
+*Question 3_c: Matched Differential Signalling
+
+*Resistance
+R1 8 9 10
+R2 6 7 10
+
+*Self Inductance
+L1 1 2 193.7nH
+L2 3 0 193.7nH
+L3 9 5 193.7nH
+L4 4 7 193.7nH
+
+*Mutual Inductance
+K13 L1 L3 0.1538
+K14 L1 L4 0.1538
+K12 L1 L2 0.1
+K34 L3 L4 0.815
+K32 L3 L2 0.1538
+K42 L4 L2 0.1538
+
+*Capacitance
+C341 9 7 5.025pF
+C342 5 4 5.025pF
+C1 2 5 0.1nF
+C2 5 3 0.1nF
+C3 4 3 0.1nF
+C4 2 4 0.1nF
+
+Vdd 1 0 dc 1v
+Vin1 1 8 PWL(0 0 1ns 1 1us 1)
+Vin2 6 0 PWL(0 0 1ns 1 1us 1)
+
+.tran 1ns 4ns 
+
+.control
+	run
+	plot  v(2) v(3) 
+.endc
+
+.end 
+

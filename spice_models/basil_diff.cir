@@ -1,0 +1,36 @@
+*****
+V1 1 0 DC 1V
+Vramp1 1 7 PWL(0 0 1ns 1v 20ns 1v 20us 1v)
+Vramp2 9 0 PWL(0 0 1ns 1v 20ns 1v 20us 1v)
+l11 1 4 195nH
+l33 8 6 195nH
+l44 2 3 195nH
+l22 0 5 195nH
+k13 l11 l33 0.154
+k14 l11 l44 0.154
+k12 l11 l22 0.0997
+k34 l33 l44 0.839
+k32 l33 l22 0.154
+k42 l44 l22 0.154
+r2 7 8 10
+c13 4 6 104fF
+c1 4 6 0.1nF
+c2 6 5 0.1nF
+c34 6 3 5.62pF
+c42 3 5 104fF
+c3 4 3 0.1nF
+c4 3 5 0.1nF
+r1 9 2 10
+
+
+.control
+tran 0.5ns 2us
+run 
+plot v(4)
+plot v(5)
+
+.endc 
+
+
+
+

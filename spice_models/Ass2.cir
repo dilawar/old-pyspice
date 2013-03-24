@@ -1,0 +1,44 @@
+Assignment2 RollNo:113079011
+*Return path configuration
+
+* Supply
+V1 	1	0 	dc 	1  		
+*Self inductances of the wires	
+L1	1	2	1.93564e-07		
+L2	7	0	1.93564e-07			
+L3	6	3	1.93564e-07	
+*L4	4	7	1.93564e-07		
+L4	4	0	1.93564e-07		
+
+
+*Coefficients of magnetic coupling
+K12	L1	L2	0.0999819181 
+K34	L3	L4	0.84781261		
+K14	L1	L4	0.153037238
+K13	L1	L3	0.153120415
+K23	L2	L3	0.153037238
+K24	L2	L4	0.153120415
+
+*Signal r(t)
+V2	5	0	PWL(0 0 1n 1)
+*Return path configuration
+R1	5	6	10
+C1	2	3	0.1n
+C2	3	4	0.1n
+R2  4   7   0.1
+
+*Capacitance between Wire3 and 4(Split into two half value capacitors)
+C3  6   0   4.80249e-12
+C4  3   4   4.80249e-12
+
+*Capacitance between Wire1 and 3(Split into two half value capacitors)
+C5  1   6   2.04266e-13
+C6  2   3   2.04266e-13
+
+*Capacitance between Wire2 and 4
+C8  4  7   4.08532e-13
+
+*Transient analysis period
+.TRAN 	0.1n	2000n
+
+.end

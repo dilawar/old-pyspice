@@ -1,0 +1,51 @@
+Question 3
+.param ind=1.965f
+*capacitance of modeled wire
+*All capacitances are calculated using CAPEM
+cw30 au 0 200f
+cw31 bw 0 200f 
+cw34 au av 250f
+cw43 bw bx 250f
+cw41 bx 0 180f
+cw40 av 0 180f
+*Capacitance due to effect of w1 and w2 are neglected
+
+*Inductance of modeled wire
+lw3 au bw 'ind'
+lw4 av bx 'ind'
+
+lw1 ap br 'ind' 
+lw2 aq bs 'ind'
+*Mutual inductance
+k34 lw3 lw4 0.841
+
+
+*System A
+*v_rt ap aq PWL(0 0v 1ns 1v 500.00ns 1v) 
+*r_a ap au 10
+*v_sc aq av 0v
+
+system A differential case for question 3(c)
+v_rt1 ap ap1 PWL(0 0v 1ns 1v 500.00ns 1v) 
+r_d1 ap1 au 10
+
+v_rt2 aq1 aq PWL(0 0v 1ns 1v 500.00ns 1v) 
+r_d2 aq1 av 10
+
+*System B
+*crw br bw 0.1n
+*cws bw bs 0.1n
+*vb1 bx bs dc 0v  
+
+*system B differential case for question 3(c)
+crw br bw 0.1n
+crx br bx 0.1n
+cws bw bs 0.1n
+cxs bx bs 0.1n
+
+.tran 10n 1u uic
+.control 
+run
+plot V(br) V(bs)
+.endc
+.end

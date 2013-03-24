@@ -1,0 +1,42 @@
+* Q1_d simulation
+.include tsmc_spice_180nm.txt
+
+m2 4 6 3 3 cmosp L=0.18u W=3.6u 
+m1 4 6 5 5 cmosn L=0.18u W=1.8u 
+
+*Defining input voltage 
+v1 1 0 1v
+
+* Clock Pulse with slope of 100 ps
+
+vpulse1 6 0 pwl(0 0v 0.1ns 1v 0.55ns 1v 0.65ns 0v 1.1ns 0v 1.2ns 1v 1.65ns 1v 1.75ns 0v 2.2ns 0v)
+
+* Defining self inductances
+L1 2 3 1H
+L2 7 5 1H
+*-----------------------------------------------------------
+* Defining capacitances
+
+CD 1 0 0.1u
+*CL 4 5 1n
+*-----------------------------------------------------------
+*Defining Resistances
+R1 1 2 0.1
+R2 0 7 0.1
+------------------------------------------------------------
+.tran 0.1ns 10ns 
+  
+* Control commands to run simulator, display the node status, and plot the specified results
+.control
+
+run
+
+plot v(6)  v(4)
+
+set hcopydevtype=postscript
+hardcopy test5.ps v(6) v(4)
+
+.endc
+* end Control commands
+
+.end

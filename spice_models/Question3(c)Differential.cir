@@ -1,0 +1,50 @@
+*Circuit equivalent
+V1 P 0 dc 1
+Vramp1 1 0 PWL(0 0 1ns 1 2ns 1 5ns 1)
+Vramp2 P 2 PWL(0 0 1ns 1 2ns 1 5ns 1)
+
+Ld  P R 196.594n
+Lc  U W 196.594n 
+Lb  V X 196.594n
+La  0 S 196.594n
+Kbc  Lb Lc 0.841597
+R1 2 U 10
+R2 1 V 10
+
+C1 R W 0.1n
+C2 W S 0.1n
+C3 R X 0.1n
+C4 X S 0.1n
+
+Cb01 V 0 0.45212p 
+Cbc1 V U 4.67652p
+Cb02 X 0 0.45212p
+Cbc2 X W 4.67652p
+Cc01 U 0 0.470173p
+Cc02 W 0 0.470173p
+Cd01 P 0 0.918765p
+Cd02 R 0 0.918765p
+Ca01 0 0 0.887335p
+Ca02 S 0 0.887335p
+
+Ccd1 P U .09816p
+Ccd2 W R .09816p
+
+Cbd1 V P .070217p
+Cbd2 X R .070217p
+
+Cac1 0 U .103744p
+Cac2 S W .103744p
+
+Cad1 0 P .098138p
+Cad2 S R .098138p
+
+Cab1 V 0 .09904725p
+Cab2 X S .09904725p
+
+
+Rbadawala w 0 10000G
+.tran 10ps 300ns 
+.end
+
+

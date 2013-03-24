@@ -1,0 +1,38 @@
+CIRCUIT 1 
+*Inductances
+L1 1 4 194n
+L3 3 5 194n
+L4 7 8 194n
+L2 0 9 194n
+*Capacitances
+C1 4 5 100p
+C2 5 9 100p
+C3 4 8 100p
+C4 8 9 100p
+C5 1 3 85f
+C6 4 5 85f
+C7 3 7 3.16p
+C8 5 8 3.16p
+C9 7 0 85f
+C10 8 9 85f
+*Resistances
+R1 2 3 10
+R2 6 7 10 
+K13 L1 L3 0.15
+K14 L1 L4 0.15
+K23 L2 L3 0.15
+K24 L2 L4 0.15
+K34 L3 L4 0.782
+K12 L1 L2 0.099
+V1 1 0 dc 1
+V2 1 2 pwl(0ns 0V 1ns 1V 2us 1V)
+V3 6 0 pwl(0ns 0V 1ns 1V 2us 1V)
+
+.control
+run
+plot V(4)
+plot V(9)
+
+.endc
+.tran 0.02us 1us
+.end

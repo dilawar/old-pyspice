@@ -1,0 +1,29 @@
+* DC Supply
+vdc 1 0 dc 1v
+
+* Wire 
+R1 1 2 0.05
+L1 2 4 1e-9
+R2 3 0 0.05
+L2 5 3 1e-9
+
+
+* System 
+ipwl 4 0 pwl(0 0 500ps 0 550ps 20 600ps 0 1500ps 0)
+C0 4 5 1n
+
+* Decoupling Capacitance
+C1 4 5 99n
+
+.tran 0.01ns 700ns uic
+
+*.control section
+
+.control
+run
+
+plot v(4) - v(5)
+
+.endc
+
+.end

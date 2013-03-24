@@ -1,0 +1,28 @@
+** assign2_q1d***
+
+.include tsmc_spice_180nm.txt
+
+mn1 out 2 4 4 cmosn L=0.18u W=18u
+mp1 out 2 3 3 cmosp L=0.18u W=36u
+
+Cl out 0 1nf
+Cd 3 4 99nf
+
+*L1 5 3 100nH
+*L2 4 7 100nH
+
+R1 6 3 0.05
+R2 0 4 0.05
+
+Vdd 6 0 dc 1V
+
+Vin 2 0 PULSE(0 1V 0NS 0.1NS 0.1NS 0.4NS 1NS)
+
+.ic v(2)=0V v(out)=1V v(3)=1V
+.tran 1us 50us 
+
+.control 
+run
+plot v(3)-v(4)
+.endc
+.end

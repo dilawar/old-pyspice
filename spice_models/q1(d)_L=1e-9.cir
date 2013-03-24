@@ -1,0 +1,13 @@
+ques 1,L in account
+
+v1 1 0 dc 1
+r1 1 2 .5m
+l1 2 3 1n 
+r2 0 4 .5m
+l2 4 5 1n
+c1 3 5 99nf
+c2 3 5 1nf
+
+
+.tran .001ns .2us uic
+.end

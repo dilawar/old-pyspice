@@ -1,0 +1,91 @@
+*Assignment_2_Q_3_b
+
+*Author : SHAHBAZ SARIK
+*including technology file
+
+.include tsmc_spice_180nm.txt
+
+*Modelling the wire
+
+*Partial self inductance of wires (W1, W2, W3, W4)
+
+lw1 P R 1.9335e-7
+lw2 W U 1.9335e-7
+lw3 X V 1.9335e-7
+lw4 Q S 1.9335e-7
+
+*Partial mutual inductances among the wire
+
+*Between (w1,w3), (w2,w4), (w1,w4), (w2,w3)
+
+k13 lw1 lw3 0.15
+k24 lw2 lw4 0.15
+k14 lw1 lw4 0.15
+k23 lw2 lw3 0.15
+
+*Between (w1,w2)
+ 
+k12 lw1 lw2 0.1
+
+*Between (w3,w4)
+
+k34 lw3 lw4 0.85
+
+*Inter wire capacitances (present between two wires), (w1,w3), (w3,w4), (w4,w2).
+*These capacitances broken into two equal parts and placed at the ends of the wire.
+*since dimension if all wires are same and 1,3 and 4,2 have same distance between them
+*so they will have similar capacitance
+
+cw13_part1 P U 0.2049pf
+cw13_part2 R W 0.2049pf
+
+cw42_part1 V Q 0.2049pf
+cw42_part2 X S 0.2049pf
+
+*capacitance between 3,4
+cw34_part1 U V 4.801pf
+cw34_part2 W X 4.801pf
+
+*Capacitance between wire and ground 
+*These capacitances broken into two equal parts and placed at the ends of the wire.
+
+cw1_part1 P gnd 0.969pf
+cw1_part2 R gnd 0.969pf
+
+cw2_part1 U gnd 1.0314pf
+cw2_part2 W gnd 1.0314pf
+
+cw3_part1 V gnd 0.573pf
+cw3_part2 X gnd 0.573pf
+
+cw4_part1 Q gnd 0.581pf
+cw4_part2 S gnd 0.581pf
+
+*defining subsystem A
+
+v_rt A V pwl(0 0 1ns 1 2s 1)
+rA A U 10
+
+*defining subsystem B
+cB1 R W  0.1nF
+cB2 W X 0.1nF
+
+*completing connections
+r1 Q gnd 0
+r2 X S 0
+r3 Q V 0
+Vsup P gnd dc 1
+
+
+.tran 1n 2500ns uic
+
+
+.control
+run
+plot v(R)
+plot v(S)
+
+.endc
+.end
+
+ 

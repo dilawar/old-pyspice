@@ -1,0 +1,27 @@
+EE668 Assignemnt 2 Q1d
+
+Vdd 1 0 dc 1v
+
+Rdd 1 7 50m
+
+***** This value of L is varied ** 
+Ldd 7 2 1000nH
+
+Cd 2 3 99nF
+
+Rss 0 8 50m
+
+***** This value of L is varied **
+Lss 8 3 1000nH
+
+Vtrn 20 0 pwl(0ns 0 50ps 20 100ps 0 2ns 0) r=0
+
+G1 2 4 20 0 1
+
+Cl 4 3 1nF
+
+RG 4 0 1000000G
+
+.tran 0.1ns 2000ns
+
+.end

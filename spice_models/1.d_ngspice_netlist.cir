@@ -1,0 +1,45 @@
+
+
+
+
+
+C1 4 9 1nf ic=0v
+
+
+L1 9 0 .1uH
+
+L2 1 2 .1uH
+
+*L1 9 0 1uH
+
+*L2 1 2 1uH
+
+R1 2 7 .1
+
+
+vidd1 7 8 dc 0.0v
+
+C_decople 7 9 99nf ic=1v
+
+
+vdc  1 0 1v
+
+
+.ic v(7)=1v v(4)=0v v(9)=0v v(2)=1v
+
+Iac 8 4  pwl(0ns 0A 1ns 0A 1.05ns 20A 1.1ns 0A 2ns 0A 2.05ns 20A 2.1ns 0A 3ns 0A 3.05ns 20A 3.1ns 0A 4ns 0A)
+
+.tran  0.1ns 10ns uic
+.end
+
+
+
+
+
+
+
+
+
+
+
+

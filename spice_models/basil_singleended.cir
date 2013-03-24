@@ -1,0 +1,26 @@
+VDD 1 0 DC 1V
+l33 5 2 195nH
+l11 1 4 195nH
+l44 0 3 195nH
+l22 0 3 195nH
+k13 l11 l33 0.154
+k12 l11 l22 0.0997
+k14 l11 l44 0.154
+k34 l33 l44 0.839
+k32 l33 l22 0.154
+k42 l44 l22 0.154
+13 3 2 104fF
+c34 2 3 2.62pF
+c42 3 3 104fF
+c1 4 2 0.1n
+c2 2 3 0.1n
+r1 6 5 10
+
+Vtest 6 0 PWL(0 0 1nS 1 50nS 1 1us 1 2us 1 3us) 
+
+.tran 1ns 500ns uic
+.control
+
+run 
+plot v(4) v(3)
+.endc  

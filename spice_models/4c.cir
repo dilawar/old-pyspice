@@ -1,0 +1,24 @@
+* Question 4c.
+
+L1 1 2 1.933e-7
+L2 4 3 1.933e-7
+L3 8 6 1.933e-7
+K L2 L3 1.6383e-7 
+
+R1 7 4 100
+R2 7 8 100
+
+L4 0 9 1.933e-7
+C1 3 6 8687ff
+C2 2 3 0.1nf
+C3 3 9 0.1nf
+C4 2 6 0.1nf
+C5 6 9 0.1nf
+
+vin 1 0 1
+vr1 1 5 pwl(0 0v 1ns 1v)
+vr2 7 0 pwl(0 0v 1ns 1v)
+
+.tran .1ns 1000ns uic
+.end
+

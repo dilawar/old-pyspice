@@ -1,0 +1,25 @@
+.include tsmc_spice_180nm.txt
+*************Inverter
+mp1 out in P P cmosp L=0.18u W=36m
+mn1 out in Q Q cmosn L=0.18u W=18m
+*************Circuit components
+Cl out Q 1nF
+*Cd P Q 99nf
+Ldd  M P   10nH
+Lss   Q N   10nH
+Rdd  A M  0.05
+Rss   N 0   0.05
+
+************Power Supply
+vdd  A 0  dc  1.0v
+
+************Input to inverter
+vin  in 0  PULSE(0  1V  0NS  0.1NS  0.1NS  50NS  100NS)
+.ic  v(in)=0.0V v(out)=1.0V  v(P)=1.0V
+
+.tran 0.1ns 400ns uic
+.control
+run
+plot   v(P)-v(Q)  v(in)
+.endc
+.end

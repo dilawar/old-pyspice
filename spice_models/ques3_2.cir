@@ -1,0 +1,23 @@
+ques 3 part b
+
+Ca 1 3 2.45pF
+Cb 9 8 10.9pF
+Cc 2 7 9.33pF
+Cd 0 12 2.58pF
+C1 4 5 0.1nF
+C2 14 5 0.1nF
+
+L1 3 4 0.248uH
+L2 8 5 0.3882uH
+L3 7 6 0.3882uH
+L4 12 6 0.248uH
+
+R1 10 9 10
+
+V1 1 0 1v
+v3 14 6 0v
+V2 10 0 pwl(0 0v 1ns 1v 1000ns 1v)
+
+.ic V(4) = 1v 
+.tran 1ns 1000ns uic 
+.end

@@ -1,0 +1,44 @@
+
+VDD 1 0 DC 1V
+Vtest1 1 5 PWL(0 0 1ns 1v 20ns 1v 20us 1v)
+Vtest2 6 0 PWL(0 0 1ns 1v 20ns 1v 20us 1v) 
+
+
+L11 1 2 194nH
+L33 4 3 194nH
+L44 7 8 194nH
+L22 0 9 194nH
+
+K13 L11 L33 0.1543
+K14 L11 L44 0.1504
+K12 L11 L22 0.0358
+K34 L33 L44 0.8434
+K32 L33 L22 0.1543
+K42 L44 L22 0.1543
+
+C1 2 3 0.1n
+C2 3 9 0.1n
+C3 2 8 0.1n
+C4 8 9 0.1n
+
+C13 2 3 52fF
+C13_1 1 4 52fF
+
+C34 3 8 1.31pF
+C34_1 4 7 1.31pF
+
+C42 8 9 52fF
+C42_1 7 0 52fF
+
+R1 5 4 10
+R2 6 7 10
+
+.control
+tran 0.1ns 2us
+run 
+plot v(2) 
+plot v(9)
+
+.endc 
+
+

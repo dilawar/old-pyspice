@@ -1,0 +1,22 @@
+Question 3 part b Netlist
+v1 p 0 dc 1v
+v_ramp a_in 0 PWL(0 0 1ns 1 5ns 1 20ns 1) r=5ns 
+
+L_s_1 p r_b 1.95fH
+c1 r_b b_in 0.1n
+c2 b_in s 0.1n
+L_s_3 u b_in 1.95fH
+R_s a_in u 100
+L_s_4 s 0 1.95fH
+R_d s s_d 0
+L_s_2 s_d 0 1.95fH
+k_3_4 L_s_3 L_s_4 0.8
+
+.tran 10ps 5000ps
+
+.control
+run
+plot v(r_b) 
+plot v(s)
+.endc
+.end

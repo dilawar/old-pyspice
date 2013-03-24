@@ -1,0 +1,82 @@
+Usefulness of Matched Differential Signaling Arrangement
+*
+*===================================================================
+* DC Supply
+vdc P 0 dc 1v
+*
+*===================================================================
+* System A Description
+Vramp1 P 1 pwl(0 0 1ns 1v 5us 1v)
+R1 1 U 10
+Vramp2 2 Q pwl(0 0 1ns 1v 5us 1v)
+R2 2 V 10
+R3 Q 0 0
+*
+*===================================================================
+* Wire Description
+* Self Inductance and Wire Capacitances are modeled as a pi network
+* with capacitances on two legs and inductance as the middle branch
+
+* Self Inductances
+L1 P R 1.9335e-7
+L3 U W 1.9335e-7
+L4 V X 1.9335e-7
+L2 0 S 1.9335e-7
+
+* Mutual Inductances
+K12 L1 L2 0.100783
+K13 L1 L3 0.154801
+K14 L1 L4 0.154716
+K34 L3 L4 0.847344
+K32 L3 L2 0.154716
+K42 L4 L2 0.154801
+
+
+* Capacitances between Wires
+C13_1 P U 2.04266e-13
+C13_2 R W 2.04266e-13
+C14_1 P V 1.919165e-13
+C14_2 R X 1.919165e-13
+C12_1 P Q 1.213565e-13
+C12_2 R S 1.213565e-13
+C34_1 U V 51.188e-13
+C34_2 W X 51.188e-13
+C32_1 U Q 1.89432e-13
+C32_2 W S 1.89432e-13
+C42_1 V Q 1.94834e-13
+C42_2 X S 1.94834e-13
+
+* Interconnect to ground capacitance
+C1_1 P 0 1.031235e-12
+C1_2 R 0 1.031235e-12
+C3_1 U 0 0.9715e-12
+C3_2 W 0 0.9715e-12
+C4_1 V 0 0.99855e-12
+C4_2 X 0 0.99855e-12
+C2_1 Q 0 1.031235e-12
+C2_2 S 0 1.031235e-12
+*
+*===================================================================
+* System B Description
+C1 R W 0.1n
+C2 R X 0.1n
+C3 W S 0.1n
+C4 X S 0.1n
+*
+*===================================================================
+* Transient Analysis upto 2us, in steps of 0.1ns
+.ic v(R)=1v v(U)=1v v(W)=1v v(V)=0v v(X)=0v v(S)=0v
+.tran 0.1ns 2us uic
+*
+*===================================================================
+* .control section
+.control
+run
+plot v(R) v(S)
+plot v(R) - v(S)
+.endc
+* end of control section
+*===================================================================
+* End Simulation
+.end
+*===================================================================

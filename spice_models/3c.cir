@@ -1,0 +1,44 @@
+
+
+
+
+L11 7 1 195nH
+L33 3 2 195nH
+L44 6 5 195nH
+L22 0 9 195nH
+
+
+K12 L11 L22 0.0995
+K13 L11 L33 0.154
+K14 L11 L44 0.154
+K23 L33 L22 0.154
+K24 L44 L22 0.154
+K34 L33 L44 0.841
+
+
+
+C13 1 2 408fF
+C34 2 5 10.2pF
+C42 5 9 389fF
+C1 1 2 0.1nF
+C2 1 5 0.1nF
+C3 5 9 0.1nF
+C4 2 9 0.1nF
+
+R1 8 6 10
+R2 4 3 10
+
+VDD 7 0 DC 1V
+Vramp1 7 4 PWL(0 0 1ns 1v 20ns 1v 20us 1v)
+Vramp2 8 0 PWL(0 0 1ns 1v 20ns 1v 20us 1v)
+ 
+
+
+.control
+tran 0.1ns 2us
+run 
+plot v(1)
+plot v(9)
+
+.endc 
+ 

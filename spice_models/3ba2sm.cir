@@ -1,0 +1,24 @@
+Shivam A2_3b
+*.include tsmc_spice_180nm.txt
+V1 1 0 dc 1
+L1 1 2 193.26n
+C1 2 3 0.1n
+C2 3 4 0.1n
+L3 5 3 193.26n
+R1 5 6 10
+Vr 6 0 pwl(0 0 1n 1)
+L4 4 7 193.26n
+R2 7 0 0
+L2 4 0 193.26n
+K34 L3 L4 0.84725    * shows coupling ratio [0-1] 
+K13 L1 L3 0.1542
+K14 L1 L4 0.1542
+K23 L2 L3 0.1542
+K24 L2 L4 0.1542
+K12 L1 L2 0.1
+.control
+tran 0.1ns 500ns
+write datafile.raw v(1) v(2)
+plot v(6) v(2) v(4)
+.endc
+.end

@@ -1,0 +1,27 @@
+assign21d
+.PARAM INDUCTANCE=50uH
+R12 1 2 0.050
+R05 5 0 0.050
+
+L23 2 3 INDUCTANCE
+L54 5 4 INDUCTANCE
+
+C34 3 4 99nf
+C341 3 4 1nf
+
+V10 1 0 1V
+
+G34 3 4 7 0 1
+
+vinb 7 0 PWL(0 0v 50ps 20v 100ps 0v 2ns 0v 2.05ns 20v 2.1ns 0v 4ns 0v 4.05ns 20v 4.1ns 0v 6ns 0v 6.05ns 20v 6.1ns 0v 8ns 0v 8.05ns 20v 8.1ns 0v 10ns 0v 10.05ns 20v 10.1ns 0v 12ns 0v 12.05ns 20v 12.1ns 0v 14ns 0v 14.05ns 20v 14.1ns 0v 16ns 0v 16.05ns 20v 16.1ns 0v 18ns 0v 18.05ns 20v 18.1ns 0v 20ns 0v 20.05ns 20v 20.1ns 0v 22ns 0v 22.05ns 20v 22.1ns 0v 24ns 0v 24.05ns 20v 24.1ns 0v 26ns 0v 26.05ns 20v 26.1ns 0v 28ns 0v 28.05ns 20v 28.1ns 0v 30ns 0v 30.05ns 20v 30.1ns 0v 32ns 0v 32.05ns 20v 32.1ns 0v 34ns 0v 34.05ns 20v 34.1ns 0v 36ns 0v 36.05ns 20v 36.1ns 0v 38ns 0v 38.05ns 20v 38.1ns 0v 40ns 0v 40.05ns 20v 40.1ns 0v 42ns 0v 42.05ns 20v 42.1ns 0v 44ns 0v 44.05ns 20v 44.1ns 0v 46ns 0v 46.05ns 20v 46.1ns 0v 48ns 0v 48.05ns 20v 48.1ns 0v 50ns 0v 50.05ns 20v 50.1ns 0v 52ns 0v 52.05ns 20v 52.1ns 0v 54ns 0v 54.05ns 20v 54.1ns 0v 56ns 0v 56.05ns 20v 56.1ns 0v 58ns 0v 58.05ns 20v 58.1ns 0v 60ns 0v 60.05ns 20v 60.1ns 0v 62ns 0v 62.05ns 20v 62.1ns 0v 64ns 0v 64.05ns 20v 64.1ns 0v 66ns 0v 66.05ns 20v 66.1ns 0v 68ns 0v 68.05ns 20v 68.1ns 0v 70ns 0v 70.05ns 20v 70.1ns 0v 72ns 0v 72.05ns 20v 72.1ns 0v 74ns 0v 74.05ns 20v 74.1ns 0v 76ns 0v 76.05ns 20v 76.1ns 0v 78ns 0v 78.05ns 20v 78.1ns 0v 80ns 0v)
+
+*Rinb 7 0 1
+.tran 1ns 80ns
+
+.control
+run
+plot v(3) v(4) 
+*plot v(1) v(7) 
+.endc
+
+.end

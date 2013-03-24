@@ -1,0 +1,15 @@
+
+***Yaksh Rawal, Roll.no: 113076005, EE668***
+L1 N002 X 100n    *Change L1 and L2 from 10nH, 100nH and 1000nH*
+L2 N003 Y 100n
+C1 X Y 1n 
+C2 X Y 100n
+IA X Y PWL(0 1 19ns 1 20ns 0)
+R1 N002 N001 0.05
+R2 N003 0 0.05
+V1 N001 0 1 
+.control
+.tran 100nS 20000nS 0nS   *For 1000nH, use 250us*
+plot v(X)
+.endc
+.end
