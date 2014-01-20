@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import networkx 
-import re 
-import netlist
+import circuit as c
 
 if __name__ == "__main__" :
-  print("Executing main")
+    cir = c.Circuit('compartment.cir')
