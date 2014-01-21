@@ -19,11 +19,10 @@ __status__           = "Development"
 import os 
 import sys
 import networkx as nx
-from device import *
 import logging
 import matplotlib.pyplot as plt
-from circuit import *
-from debug import *
+from circuit.device import *
+from circuit.debug import *
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -154,9 +153,9 @@ class Circuit():
         while(len(devices) > 1):
             firstD = devices.pop(0)
             if len(firstD.inputP) < 1 or len(firstD.outputP) < 1:
-                raise UserWarning, "Missing value or parameter"
+                raise UserWarning("Missing value or parameter")
             if len(secondD.inputP) < 1 or len(secondD.outputP) < 1:
-                raise UserWarning, "Missing value or parameter"
+                raise UserWarning("Missing value or parameter")
             self.addDevice(firstD)
 
             secondD = devices[0]

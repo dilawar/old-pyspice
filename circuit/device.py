@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """devices.py: This file contain classes of basic ngspice devices.
 
@@ -17,7 +17,7 @@ __status__           = "Development"
 
 import logging
 import networkx as nx
-from network import *
+from circuit.network import *
 
 class Device(object):
     """
@@ -76,12 +76,19 @@ class Resistor(Device):
             self.value = value
         self.setParams(name, inT, outT)
 
+    def getPorts(self):
+        return (self.inputP[0], self.outputP[0])
+
 class Capacitor(Device):
     def __init__(self, name=None, value=0e-10, inT='', outT='', **kwargs):
         super(Capacitor, self).__init__(kwargs)
         self.name = name
         self.value = value 
         self.setParams(name, inT, outT)
+
+    def getPorts(self):
+        return (self.inputP[0], self.outputP[0])
+
 
 class VoltageSource(Device):
 
