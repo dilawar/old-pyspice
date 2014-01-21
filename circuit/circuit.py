@@ -26,6 +26,9 @@ import matplotlib.pyplot as plt
 logging.basicConfig(level=logging.DEBUG)
 
 class Node:
+    """
+    Class representing node.
+    """
     def __init__(self):
         self.name = ""
         self.index = 0
