@@ -16,6 +16,8 @@ __email__            = "dilawars@iitb.ac.in"
 __status__           = "Development"
 
 import logging
+import networkx as nx
+from network import *
 
 class Device(object):
     """
@@ -27,8 +29,8 @@ class Device(object):
         self.portNos = 2
         self.graphLine = None
         self.value = None
-        self.input = []
-        self.output = []
+        self.inputP = []
+        self.outputP = []
         self.current = 0.0
         self.voltage = 0.0
         self.params = paramDict
@@ -39,17 +41,19 @@ class Device(object):
     def computeI(self, voltage):
         return voltage 
 
-    def setPort(self, inPort, outPort):
-        '''Set the port of device '''
+    def setPort(self, inPort, outPort, append=False):
+        '''Set the port of device 
+        
+        '''
         if not inPort:
-            self.input.append(self.name+'_in')
-        else:
-            self.input.append(inPort)
+            inPort = "ni_{}".format(len(network))
+        if append: self.inputP.append(inPort)
+        else: self.inputP = [inPort]
 
         if not outPort:
-            self.output.append(self.name+'_out')
-        else:
-            self.output.append(outPort)
+            outPort = "no_{}".format(len(network))
+        if append: self.outputP.append(outPort)
+        else: self.outputP = [ outPort ]
 
     def setParams(self, name, inPort, outPort):
         ''' Set parameters '''
